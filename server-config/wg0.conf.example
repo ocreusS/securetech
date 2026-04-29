@@ -1,0 +1,14 @@
+[Interface]
+Address = 10.0.0.1/24
+ListenPort = 51820
+PrivateKey = REEMPLAZAR_CLAVE_PRIVADA_SERVIDOR
+
+[Peer]
+PublicKey = REEMPLAZAR_CLAVE_PUBLICA_CLIENTE_UBUNTU
+AllowedIPs = 10.0.0.2/32
+PersistentKeepalive = 25
+
+[Peer]
+PublicKey = REEMPLAZAR_CLAVE_PUBLICA_CLIENTE_WINDOWS
+AllowedIPs = 10.0.0.3/32
+PersistentKeepalive = 25

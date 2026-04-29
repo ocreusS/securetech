@@ -1,0 +1,15 @@
+apiVersion: 1
+datasources:
+  - name: SecureTECH-DB
+    type: postgres
+    access: proxy
+    url: postgres:5432
+    user: grafana_reader
+    secureJsonData:
+      password: $__env{GRAFANA_DB_PASSWORD}
+    jsonData:
+      database: securetech
+      sslmode: disable
+      postgresVersion: 1600
+    isDefault: true
+    editable: false

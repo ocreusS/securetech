@@ -1,0 +1,35 @@
+-- Panel 1: Copias por día
+SELECT
+    DATE_TRUNC('day', fecha_inicio) AS time,
+    COUNT(*) AS total_copias
+FROM ejecuciones_backup
+WHERE fecha_inicio > NOW() - INTERVAL '30 days'
+GROUP BY 1
+ORDER BY 1;
+
+-- Panel 2: Fallos por día
+SELECT
+    DATE_TRUNC('day', fecha_inicio) AS time,
+    COUNT(*) AS fallos
+FROM ejecuciones_backup
+WHERE estado = 'ERROR'
+  AND fecha_inicio > NOW() - INTERVAL '30 days'
+GROUP BY 1
+ORDER BY 1;
+
+-- Panel 3: Estado actual de cada dispositivo (tipo: Table)
+SELECT
+    cliente,
+    device_uid,
+    hostname,
+    estado,
+    tipo_copia,
+    fecha_inicio,
+    ROUND(tamano_bytes / 1024.0 / 1024.0, 2) AS tamano_mb
+FROM v_ultimo_backup
+ORDER BY fecha_inicio DESC NULLS LAST;
+
+-- Panel 4: Total de backups OK vs ERROR
+SELECT estado, COUNT(*) AS total
+FROM ejecuciones_backup
+GROUP BY estado;

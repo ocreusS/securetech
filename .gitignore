@@ -1,0 +1,29 @@
+# Secretos
+.env
+*.env
+!.env.example
+
+# WireGuard y claves
+*.key
+*.pem
+*.pub
+server-config/wg0.conf
+/etc/wireguard/
+
+# Datos persistentes
+postgres_data/
+minio_data/
+grafana_data/
+data/
+backup/
+volumes/
+
+# Logs y temporales
+*.log
+*.tmp
+*.swp
+.cache/
+__pycache__/
+
+# Overrides locales
+docker-compose.override.yml

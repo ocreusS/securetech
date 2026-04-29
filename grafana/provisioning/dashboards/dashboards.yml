@@ -1,0 +1,10 @@
+apiVersion: 1
+providers:
+  - name: SecureTECH
+    orgId: 1
+    folder: SecureTECH
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 30
+    options:
+      path: /var/lib/grafana/dashboards
